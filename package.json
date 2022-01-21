@@ -1,0 +1,19 @@
+{
+  "name": "express-cookiesparser",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arafat Olayiwola",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "crypto": "^1.0.1",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
