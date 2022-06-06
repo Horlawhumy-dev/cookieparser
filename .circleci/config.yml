@@ -11,7 +11,7 @@ jobs:
     steps:
       - run: echo "Hellow World" > ~/output.txt
       - persist_to_workspace:
-          root: ~/
+          root: /home/circleci
           paths: output.txt
           
   print_output_file:
@@ -19,8 +19,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - attach_workspace:
-          at: ~/output.txt    
-      - run: cat ~/output.txt
+          at: /home/circleci/output.txt   
+      - run: cat /home/circleci/output.txt
     
 workflows:
   # Name the workflow "welcome"
