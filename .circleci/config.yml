@@ -10,7 +10,7 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo "Hellow World" > ~/output.txt
-      - persist-to-workspace:
+      - persist_to_workspace:
           root: ~/
           paths: output.txt
           
@@ -18,7 +18,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - attach-to-workspace:
+      - attach_to_workspace:
           at: ~/output.txt    
       - run: cat ~/output.txt
     
