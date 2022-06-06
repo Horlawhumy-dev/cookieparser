@@ -2,6 +2,8 @@
 version: 2.1
 # Orchestrate or schedule a set of jobs
 jobs:
+  enviroment:
+    MY_ENV_NAME: Arafat
   print_hello:
     docker:
       - image: circleci/node:13.8.0
@@ -12,8 +14,7 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo world
-      - run: npm start 
+      - run: echo world from $MY_ENV_NAME
 workflows:
   # Name the workflow "welcome"
   welcome:
