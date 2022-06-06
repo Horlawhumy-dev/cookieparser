@@ -3,23 +3,31 @@ version: 2.1
 # Orchestrate or schedule a set of jobs
 environment:
   MY_ENV_NAME: arafat-olayiwola
+  
 jobs:
-  print_hello:
+  save_print_hello_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo hello
-  print_world:
+      - run: echo "Hellow World" > ~/output.txt
+      - persist-to-workspace:
+          root: ~/
+          paths: output.txt
+          
+  print_output_file:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - run: echo $MY_ENV_NAME
+      - attach-to-workspace:
+          at: ~/output.txt    
+      - run: cat ~/output.txt
+    
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - print_hello
-      - print_world
-#           requires:
-#             - print_hello
+      - save_print_hello_world
+      - print_output_file:
+          requires:
+            - save_print_hello_world
