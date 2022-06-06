@@ -2,14 +2,13 @@
 version: 2.1
 # Orchestrate or schedule a set of jobs
 enviroment:
-    MY_ENV_NAME: arafat
+  MY_ENV_NAME: arafat-olayiwola
 jobs:
   print_hello:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - run: echo hello
-      - run: npm install
   print_world:
     docker:
       - image: circleci/node:13.8.0
@@ -21,6 +20,6 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - print_hello
-      - print_world:
-          requires:
-            - print_hello
+      - print_world
+#           requires:
+#             - print_hello
